@@ -86,7 +86,7 @@ export default function App() {
           {/* Core Info Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start font-sans text-xs">
             <div className="md:col-span-8 space-y-1 bg-slate-50 p-3 rounded border border-slate-200">
-              <span className="font-bold text-slate-800 block text-[10px] uppercase font-mono tracking-wider">Expert Profile Focus (80:20 Rule)</span>
+              <span className="font-bold text-slate-800 block text-[10px] uppercase font-mono tracking-wider">Expert Profile Focus</span>
               <p className="text-slate-600 leading-relaxed font-serif text-[11.5px]">
                 Experienced lead analyst with first-class CS foundations from Warwick (UK). Specialized in digital tags governance and programmatic telemetry transformations, organizing data pipelines, and evaluating 60+ product variants across international marketplaces.
               </p>
@@ -209,7 +209,7 @@ export default function App() {
           onExploreExperience={() => scrollToSection("#experience")}
         />
 
-        {/* Interactive Experiment Sandbox (80:20 data showpiece tool) */}
+        {/* Interactive Experiment Sandbox (data showpiece tool) */}
         <ABTestingSimulator />
 
         {/* Skills Bento Grid Filter Engine */}
