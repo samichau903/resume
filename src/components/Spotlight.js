@@ -136,7 +136,7 @@ export default function Spotlight({ onExploreExperiments, onExploreExperience })
                   <div className="bg-white dark:bg-slate-950/80 border border-slate-150 dark:border-slate-800 p-3 rounded space-y-2">
                     <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
                       <span>Core Skill Focus</span>
-                      <span className="text-indigo-600 dark:text-indigo-405 font-bold">80:20 Rule</span>
+                      <span className="text-indigo-600 dark:text-indigo-405 font-bold"></span>
                     </div>
                     {/* Visual bar chart */}
                     <div className="space-y-1.5">
