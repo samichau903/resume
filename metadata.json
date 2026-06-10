@@ -1,0 +1,6 @@
+{
+  "name": "Sami Chau Resume",
+  "description": "An interactive, visual-hierarchy-driven resume for CHAU Wing Yin (Sami), Principal Data Analyst, featuring high-fidelity metrics dashboards, responsive dark mode, skill filters, and an A/B test confidence simulator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
