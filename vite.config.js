@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/resume/',
     plugins: [react(), tailwindcss()],
     esbuild: {
       loader: 'jsx',
