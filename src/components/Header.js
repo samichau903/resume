@@ -5,16 +5,9 @@
 
 import React, { useState, useEffect } from "react";
 import { Sun, Moon, FileText, Menu, X, ArrowUpRight, Github, Mail, Phone } from "lucide-react";
-import { PERSONAL_DETAILS } from "../data";
+import { PERSONAL_DETAILS } from "../data.js";
 
-interface HeaderProps {
-  darkMode: boolean;
-  setDarkMode: (dark: boolean) => void;
-  printMode: boolean;
-  setPrintMode: (print: boolean) => void;
-}
-
-export default function Header({ darkMode, setDarkMode, printMode, setPrintMode }: HeaderProps) {
+export default function Header({ darkMode, setDarkMode, printMode, setPrintMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -34,7 +27,7 @@ export default function Header({ darkMode, setDarkMode, printMode, setPrintMode 
     { label: "Publications", href: "#publications" }
   ];
 
-  const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollClick = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
     const targetElement = document.querySelector(href);
@@ -50,7 +43,7 @@ export default function Header({ darkMode, setDarkMode, printMode, setPrintMode 
         printMode
           ? "hidden"
           : scrolled
-          ? "bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800/30 shadow-xs py-3"
+          ? "bg-white/90 dark:bg-slate-955/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800/30 shadow-xs py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -105,8 +98,8 @@ export default function Header({ darkMode, setDarkMode, printMode, setPrintMode 
               onClick={() => setPrintMode(!printMode)}
               className={`flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded border transition-all ${
                 printMode
-                  ? "bg-indigo-600 border-indigo-500 text-white"
-                  : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:text-indigo-650 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-300"
+                  ? "bg-indigo-600 border-indigo-505 text-white"
+                  : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:text-indigo-605 dark:hover:text-indigo-350 text-slate-600 dark:text-slate-300"
               }`}
               title="Convert to Standard Print View"
             >
@@ -120,7 +113,7 @@ export default function Header({ darkMode, setDarkMode, printMode, setPrintMode 
             <button
               id="mobile-theme-btn"
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 text-slate-605 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-450 rounded-full border border-slate-200 dark:border-slate-800"
+              className="p-2 text-slate-605 dark:text-slate-305 hover:text-indigo-600 dark:hover:text-indigo-450 rounded-full border border-slate-200 dark:border-slate-800"
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>

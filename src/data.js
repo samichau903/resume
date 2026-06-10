@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { WorkExperience, SkillCategory, AcademicPaper } from "./types";
-
 export const PERSONAL_DETAILS = {
   name: "CHAU Wing Yin, Sami",
   title: "Principal Data Analyst",
@@ -19,7 +17,7 @@ export const PERSONAL_DETAILS = {
   certification: "Bitwork Blockchain Certification"
 };
 
-export const MENTORSHIP_EXPERIENCE: WorkExperience[] = [
+export const MENTORSHIP_EXPERIENCE = [
   {
     id: "mentor-generation",
     role: "Mentor for Junior Data Analyst Course",
@@ -33,7 +31,7 @@ export const MENTORSHIP_EXPERIENCE: WorkExperience[] = [
   }
 ];
 
-export const WORK_EXPERIENCES: WorkExperience[] = [
+export const WORK_EXPERIENCES = [
   {
     id: "seek-principal",
     role: "Principal Data Analyst",
@@ -143,7 +141,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
   }
 ];
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+export const SKILL_CATEGORIES = [
   {
     title: "BI & Data Visualization",
     iconName: "BarChart3",
@@ -176,7 +174,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   }
 ];
 
-export const ACADEMIC_PAPERS: AcademicPaper[] = [
+export const ACADEMIC_PAPERS = [
   {
     title: "Trademark image retrieval using multi-resolution and directional details",
     journal: "Published in Pattern Recognition Journal (Elsevier / ScienceDirect)",

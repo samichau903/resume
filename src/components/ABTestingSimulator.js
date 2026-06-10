@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Play, HelpCircle, AlertCircle, RefreshCw, Layers } from "lucide-react";
 
 export default function ABTestingSimulator() {
@@ -18,7 +18,6 @@ export default function ABTestingSimulator() {
   const [controlRate, setControlRate] = useState(5.0);
   const [variantRate, setVariantRate] = useState(5.7);
   const [relativeLift, setRelativeLift] = useState(14.0);
-  const [zScore, setZScore] = useState(2.18);
   const [pValue, setPValue] = useState(0.029);
   const [confidence, setConfidence] = useState(97.1);
   const [isSignificant, setIsSignificant] = useState(true);
@@ -37,7 +36,6 @@ export default function ABTestingSimulator() {
     const lift = rate1 > 0 ? ((rate2 - rate1) / rate1) * 100 : 0;
     setRelativeLift(lift);
 
-    // Z-Score computation
     // Pooled variance formula
     const pooledP = (controlConversions + variantConversions) / (controlTraffic + variantTraffic);
     const standardError = Math.sqrt(
@@ -46,7 +44,6 @@ export default function ABTestingSimulator() {
 
     if (standardError > 0) {
       const z = (p2 - p1) / standardError;
-      setZScore(z);
 
       // P-Value computation (two-tailed normal approximation)
       const pVal = 2 * (1 - normalCDF(Math.abs(z)));
@@ -54,7 +51,6 @@ export default function ABTestingSimulator() {
       setConfidence((1 - pVal) * 100);
       setIsSignificant(pVal < 0.05); // Standard 95% threshold
     } else {
-      setZScore(0);
       setPValue(1);
       setConfidence(0);
       setIsSignificant(false);
@@ -62,7 +58,7 @@ export default function ABTestingSimulator() {
   }, [controlTraffic, controlConversions, variantTraffic, variantConversions]);
 
   // High-accuracy error function approximation for standard normal cumulative distribution
-  function normalCDF(z: number): number {
+  function normalCDF(z) {
     const t = 1 / (1 + 0.2316419 * Math.abs(z));
     const d = 0.3989423 * Math.exp((-z * z) / 2);
     const p =
@@ -78,7 +74,7 @@ export default function ABTestingSimulator() {
   }
 
   // Pre-seed controls for presets
-  const applyPreset = (presetName: string) => {
+  const applyPreset = (presetName) => {
     if (presetName === "seek-recommendation") {
       setControlTraffic(25000);
       setControlConversions(1250); // 5.0%
@@ -119,19 +115,19 @@ export default function ABTestingSimulator() {
             <span className="text-xs font-mono text-slate-400 dark:text-slate-500 self-center hidden sm:block mr-2">PRESETS:</span>
             <button
               onClick={() => applyPreset("seek-recommendation")}
-              className="text-xs font-mono bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 text-slate-700 dark:text-slate-300 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
+              className="text-xs font-mono bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 text-slate-700 dark:text-slate-305 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
             >
               SEEK Recommend (+7.6% lift)
             </button>
             <button
               onClick={() => applyPreset("jobsdb-llm-search")}
-              className="text-xs font-mono bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 text-slate-700 dark:text-slate-300 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
+              className="text-xs font-mono bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 text-slate-700 dark:text-slate-305 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
             >
               LLM Search Engine (+17.0% lift)
             </button>
             <button
               onClick={() => applyPreset("unification-test")}
-              className="text-xs font-mono bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 text-slate-300 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
+              className="text-xs font-mono bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 text-slate-300 py-1.5 px-3 rounded whitespace-nowrap transition-colors"
             >
               Inconclusive Unification
             </button>
@@ -140,7 +136,7 @@ export default function ABTestingSimulator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Form Side */}
-          <div className="lg:col-span-5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-805 rounded-xl p-6 space-y-6">
+          <div className="lg:col-span-5 bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-805 rounded-xl p-6 space-y-6">
             <h3 className="font-display font-medium text-slate-800 dark:text-slate-100 text-sm tracking-wider uppercase border-b border-slate-100 dark:border-slate-800 pb-3">
               Configure Sample Cohorts
             </h3>
@@ -180,7 +176,7 @@ export default function ABTestingSimulator() {
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-[11px] font-mono text-slate-405 dark:text-slate-500 mb-1">
+                  <div className="flex justify-between text-[11px] font-mono text-slate-405 dark:text-slate-505 mb-1">
                     <span>Successful Conversions</span>
                     <span className="text-slate-705 dark:text-slate-300">{controlConversions.toLocaleString()}</span>
                   </div>
@@ -231,7 +227,7 @@ export default function ABTestingSimulator() {
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-[11px] font-mono text-slate-450 dark:text-slate-500 mb-1">
+                  <div className="flex justify-between text-[11px] font-mono text-slate-450 dark:text-slate-505 mb-1">
                     <span>Successful Conversions</span>
                     <span className="text-slate-700 dark:text-slate-300">{variantConversions.toLocaleString()}</span>
                   </div>
@@ -255,7 +251,7 @@ export default function ABTestingSimulator() {
             <div className={`p-6 border rounded-xl flex flex-col sm:flex-row items-center justify-between gap-6 transition-all duration-300 ${
               isSignificant
                 ? "bg-indigo-50/50 dark:bg-indigo-500/5 border-indigo-150 dark:border-indigo-500/20 text-indigo-700 dark:text-indigo-405"
-                : "bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-805 text-slate-500 dark:text-slate-400"
+                : "bg-white dark:bg-slate-955 border-slate-200 dark:border-slate-805 text-slate-500 dark:text-slate-400"
             }`}>
               <div className="space-y-2 text-center sm:text-left">
                 <span className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-slate-505">Experiment Outcome</span>
@@ -273,7 +269,7 @@ export default function ABTestingSimulator() {
                 <div className={`w-24 h-24 rounded-full border-4 flex flex-col items-center justify-center font-display font-bold relative ${
                   isSignificant ? "border-indigo-550 dark:border-indigo-400 text-indigo-700 dark:text-indigo-400" : "border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-505"
                 }`}>
-                  <span className="text-xs font-mono text-slate-400 dark:text-slate-500">Confidence</span>
+                  <span className="text-xs font-mono text-slate-400 dark:text-slate-505">Confidence</span>
                   <span className="text-lg">{confidence.toFixed(1)}%</span>
                 </div>
               </div>
@@ -282,8 +278,8 @@ export default function ABTestingSimulator() {
             {/* Metric Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-4 bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-lg">
-                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase">P-VALUE</div>
-                <div className="text-xl font-mono font-bold text-slate-805 dark:text-slate-200 mt-1">
+                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-505 uppercase">P-VALUE</div>
+                <div className="text-xl font-mono font-bold text-slate-805 dark:text-slate-202 mt-1">
                   {pValue.toFixed(5)}
                 </div>
                 <span className="text-[9px] font-mono text-slate-505 dark:text-slate-400">
@@ -292,7 +288,7 @@ export default function ABTestingSimulator() {
               </div>
 
               <div className="p-4 bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-lg">
-                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase">RELATIVE LIFT</div>
+                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-505 uppercase">RELATIVE LIFT</div>
                 <div className={`text-xl font-mono font-bold mt-1 ${relativeLift >= 0 ? "text-indigo-650 dark:text-indigo-400" : "text-slate-550 dark:text-slate-400"}`}>
                   {relativeLift > 0 ? "+" : ""}{relativeLift.toFixed(2)}%
                 </div>
@@ -300,8 +296,8 @@ export default function ABTestingSimulator() {
               </div>
 
               <div className="p-4 bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-lg">
-                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase">STANDARD ERROR</div>
-                <div className="text-xl font-mono font-bold text-slate-805 dark:text-slate-200 mt-1">
+                <div className="text-[10px] font-mono text-slate-400 dark:text-slate-505 uppercase">STANDARD ERROR</div>
+                <div className="text-xl font-mono font-bold text-slate-805 dark:text-slate-202 mt-1">
                   {(100 * Math.sqrt(
                     (controlRate / 100 * (1 - controlRate / 100)) / controlTraffic +
                     (variantRate / 100 * (1 - variantRate / 100)) / variantTraffic

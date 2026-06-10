@@ -3,15 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React from "react";
 import { ArrowDown, Mail, Phone, ExternalLink, Award, FileText, CheckCircle2, Github } from "lucide-react";
-import { PERSONAL_DETAILS } from "../data";
+import { PERSONAL_DETAILS } from "../data.js";
 
-interface SpotlightProps {
-  onExploreExperiments: () => void;
-  onExploreExperience: () => void;
-}
-
-export default function Spotlight({ onExploreExperiments, onExploreExperience }: SpotlightProps) {
+export default function Spotlight({ onExploreExperiments, onExploreExperience }) {
   return (
     <section
       id="spotlight"
@@ -101,14 +97,14 @@ export default function Spotlight({ onExploreExperiments, onExploreExperience }:
 
           {/* Minimalist 80/20 Interactive Resume Poster Profile (The remaining 30% visual canvas) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-[340px] lg:max-w-none p-6 bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl shadow-xs backdrop-blur-xs">
+            <div className="relative mx-auto max-w-[340px] lg:max-w-none p-6 bg-slate-55 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl shadow-xs backdrop-blur-xs">
               <div className="absolute top-3 right-3 text-[10px] font-mono text-slate-400 dark:text-slate-500">
                 ACTIVE STATUS: OPEN TO COLLABORATIONS
               </div>
 
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-405 font-mono font-bold text-lg">
+                  <div className="w-10 h-10 rounded bg-indigo-505/15 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-405 font-mono font-bold text-lg">
                     SY
                   </div>
                   <div>
@@ -119,11 +115,11 @@ export default function Spotlight({ onExploreExperiments, onExploreExperience }:
 
                 <div className="border-t border-slate-200 dark:border-slate-800/80 pt-4 space-y-3 font-mono text-xs text-slate-650 dark:text-slate-300">
                   <div className="flex justify-between">
-                    <span className="text-slate-400 dark:text-slate-500">EXPERIENCE:</span>
+                    <span className="text-slate-400 dark:text-slate-505">EXPERIENCE:</span>
                     <span className="text-slate-800 dark:text-slate-200 font-bold">12+ Years Total</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400 dark:text-slate-500">SEEK TENURE:</span>
+                    <span className="text-slate-400 dark:text-slate-505">SEEK TENURE:</span>
                     <span className="text-indigo-600 dark:text-indigo-400 font-bold">6 Years (Principal)</span>
                   </div>
                   <div className="flex justify-between">
@@ -132,7 +128,7 @@ export default function Spotlight({ onExploreExperiments, onExploreExperience }:
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400 dark:text-slate-500">LANGUAGES:</span>
-                    <span className="text-slate-805 dark:text-slate-200">En, Ca, Zh</span>
+                    <span className="text-slate-805 dark:text-slate-202">En, Ca, Zh</span>
                   </div>
                 </div>
 
@@ -182,7 +178,7 @@ export default function Spotlight({ onExploreExperiments, onExploreExperience }:
               <div className="inline-flex p-2.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 rounded-lg group-hover:bg-indigo-500/15 group-hover:scale-105 transition-all">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-display font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+              <h3 className="text-lg font-display font-bold text-slate-850 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 60+ Product Experiments
               </h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">

@@ -3,32 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { SKILL_CATEGORIES } from "../data";
+import React from "react";
+import { SKILL_CATEGORIES } from "../data.js";
 import { BarChart3, Database, LineChart, Tag, Megaphone, Brain } from "lucide-react";
 
-interface SkillsBentoProps {
-  selectedSkill: string | null;
-  setSelectedSkill: (skill: string | null) => void;
-}
-
-export default function SkillsBento({ selectedSkill, setSelectedSkill }: SkillsBentoProps) {
+export default function SkillsBento({ selectedSkill, setSelectedSkill }) {
   // Mapper for Lucide icons
-  const getIcon = (name: string) => {
+  const getIcon = (name) => {
     switch (name) {
       case "BarChart3":
-        return <BarChart3 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <BarChart3 className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
       case "Database":
-        return <Database className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <Database className="w-4 h-4 text-indigo-655 dark:text-indigo-400" />;
       case "LineChart":
-        return <LineChart className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <LineChart className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
       case "Tag":
-        return <Tag className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <Tag className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
       case "Megaphone":
-        return <Megaphone className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <Megaphone className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
       case "Brain":
-        return <Brain className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <Brain className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
       default:
-        return <Database className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />;
+        return <Database className="w-4 h-4 text-indigo-650 dark:text-indigo-400" />;
     }
   };
 
@@ -57,7 +53,7 @@ export default function SkillsBento({ selectedSkill, setSelectedSkill }: SkillsB
             </span>
             <button
               onClick={() => setSelectedSkill(null)}
-              className="px-2 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 text-slate-600 dark:text-slate-400 hover:text-indigo-700 dark:hover:text-indigo-300 rounded transition-colors"
+              className="px-2 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-455 text-slate-600 dark:text-slate-400 hover:text-indigo-700 dark:hover:text-indigo-300 rounded transition-colors"
             >
               Clear Filter [×]
             </button>
@@ -69,7 +65,7 @@ export default function SkillsBento({ selectedSkill, setSelectedSkill }: SkillsB
           {SKILL_CATEGORIES.map((category) => (
             <div
               key={category.title}
-              className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 dark:hover:border-indigo-500/60 p-6 rounded-xl space-y-4 shadow-sm hover:shadow-md transition-all duration-300"
+              className="bg-white dark:bg-slate-955 border border-slate-200 dark:border-slate-805 hover:border-indigo-500 dark:hover:border-indigo-500/60 p-6 rounded-xl space-y-4 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-900 pb-3">
                 {getIcon(category.iconName)}
@@ -87,8 +83,8 @@ export default function SkillsBento({ selectedSkill, setSelectedSkill }: SkillsB
                       onClick={() => setSelectedSkill(isActive ? null : skill)}
                       className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-all duration-200 border ${
                         isActive
-                          ? "bg-indigo-650 dark:bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-500/10 scale-105"
-                          : "bg-slate-50 dark:bg-slate-900 text-slate-750 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400"
+                          ? "bg-indigo-650 dark:bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-505/10 scale-105"
+                          : "bg-slate-50 dark:bg-slate-990 text-slate-750 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400"
                       }`}
                       id={`skill-btn-${skill.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                     >

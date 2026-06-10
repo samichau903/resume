@@ -5,18 +5,18 @@
 
 import { useState, useEffect } from "react";
 import { Mail, Phone, ExternalLink, Github, FileText, ArrowLeft, Printer, CheckCircle } from "lucide-react";
-import Header from "./components/Header";
-import Spotlight from "./components/Spotlight";
-import ABTestingSimulator from "./components/ABTestingSimulator";
-import SkillsBento from "./components/SkillsBento";
-import ExperienceSection from "./components/ExperienceSection";
-import PapersSection from "./components/PapersSection";
-import { PERSONAL_DETAILS, WORK_EXPERIENCES, MENTORSHIP_EXPERIENCE } from "./data";
+import Header from "./components/Header.js";
+import Spotlight from "./components/Spotlight.js";
+import ABTestingSimulator from "./components/ABTestingSimulator.js";
+import SkillsBento from "./components/SkillsBento.js";
+import ExperienceSection from "./components/ExperienceSection.js";
+import PapersSection from "./components/PapersSection.js";
+import { PERSONAL_DETAILS, WORK_EXPERIENCES, MENTORSHIP_EXPERIENCE } from "./data.js";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [printMode, setPrintMode] = useState(false);
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
   // Synchronize top-level dark class for any outer elements (e.g. scrollbars)
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function App() {
   }, [darkMode]);
 
   // Command handlers to scroll smoothly to sections
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id) => {
     const el = document.querySelector(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
